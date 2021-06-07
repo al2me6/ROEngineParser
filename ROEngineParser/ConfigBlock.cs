@@ -34,7 +34,7 @@ namespace ROEngineParser
 
             if (block[0][0].StartsWith("!"))
                 type = BlockType.Delete;
-            else if (block[0][0].Contains("PART"))
+            else if (block[0][0].Contains("PART") && !block[0][0].Contains("HAS"))
                 type = BlockType.Part;
             else if (block[0][0].Contains("ModuleEngines*"))
                 type = BlockType.EngineType;
@@ -55,9 +55,9 @@ namespace ROEngineParser
 
             if (type == BlockType.Unknown || type == BlockType.TestFlight || type == BlockType.EngineConfig)
             {
-                Match m = namePattern.Match(block[0][0]);
-                if (m.Success)
-                    name = m.Value.Trim(new char[2] { '[', ']' });
+                // Match m = namePattern.Match(block[0][0]);
+                // if (m.Success)
+                //     name = m.Value.Trim(new char[2] { '[', ']' });
 
                 if (string.IsNullOrEmpty(name))
                 {
@@ -73,7 +73,7 @@ namespace ROEngineParser
 
                 if (name == null)
                     type = BlockType.Unknown;
-                else if (name.Contains("ModuleEngineConfigs"))
+                else if (name.Contains("ModuleEngineConfigs") || name.Contains("ModuleHybridEngine"))
                     type = BlockType.ModuleEngineConfigs;
             }
             else if (type == BlockType.Propellant || type == BlockType.IgnitorResource)
