@@ -36,7 +36,7 @@ namespace ROEngineParser
                 type = BlockType.Delete;
             else if (block[0][0].Contains("PART") && !block[0][0].Contains("HAS"))
                 type = BlockType.Part;
-            else if (block[0][0].Contains("ModuleEngines*"))
+            else if (block[0][0].Contains("ModuleEngines"))
                 type = BlockType.EngineType;
             else if (block[0][0].Contains("ModuleGimbal"))
                 type = BlockType.ModuleGimbal;
