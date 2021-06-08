@@ -53,7 +53,7 @@ namespace ROEngineParser
             {
                 if (e.Title != null)
                 {
-                    string FileName = $"{fullOutPath}/{e.fileName}.json";
+                    string FileName = $"{fullOutPath}/{e.FileName}.json";
 
                     e.ToJsonFile(FileName, overwrite);
                 }
@@ -74,7 +74,7 @@ namespace ROEngineParser
 
                     if (Load(file) is EngineData e)
                     {
-                        e.fileName = name;
+                        e.FileName = name;
                         engines.Add(e);
                     }
                 }

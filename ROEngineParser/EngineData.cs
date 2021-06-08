@@ -17,8 +17,6 @@ namespace ROEngineParser
 
     public class EngineData
     {
-        [JsonIgnore]
-        public string fileName;
         [JsonProperty(Order = 1)]
         public string Title { get; set; }
         [JsonProperty(Order = 2)]
@@ -38,6 +36,8 @@ namespace ROEngineParser
         public GimbalData Gimbal { get; set; } = new GimbalData();
         [JsonProperty(Order = 9)]
         public Dictionary<string, EngineConfigData> EngineConfigs = new Dictionary<string, EngineConfigData>();
+        [JsonProperty(Order=10)]
+        public string FileName;
 
         public EngineData(List<string[]> cfg)
         {
